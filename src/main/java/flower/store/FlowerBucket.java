@@ -6,12 +6,12 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlowerBucket extends Item{
+public class FlowerBucket extends Item {
     private final List<FlowerPack> flowerPacks = new ArrayList<>();
     @Getter @Setter
     private int quantity;
 
-    public double getPrice(){
+    public double getPrice() {
         double price = 0;
         for (FlowerPack flowerPack: flowerPacks) {
             price += flowerPack.getPrice();
@@ -19,7 +19,7 @@ public class FlowerBucket extends Item{
         return  price;
     }
 
-    public void add_pack(FlowerPack flowerpack){
+    public void AddPack(FlowerPack flowerpack) {
         this.flowerPacks.add(flowerpack);
     }
 }

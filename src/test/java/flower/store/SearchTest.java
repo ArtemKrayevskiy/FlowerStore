@@ -30,11 +30,11 @@ public class SearchTest {
         Store store = new Store();
         FlowerBucket bucket= new FlowerBucket();
         pack.setQuantity(4);
-        bucket.add_pack(pack);
+        bucket.AddPack(pack);
         store.add_item(bucket);
         store.add_item(tulip);
         store.add_item(new_flower);
-        Assertions.assertEquals(3, store.get_number_of_items());
+        Assertions.assertEquals(3, store.GetNumberOfItems());
         List<Item> search_result = store.search(new PriceFilter(50, false));
         Assertions.assertEquals(1, search_result.size());
         Assertions.assertEquals(bucket, search_result.get(0));

@@ -1,4 +1,4 @@
 package flower.store;
 
-public enum FlowerType { ROSE, TULIP}
+public enum FlowerType { ROSE, TULIP }
 
