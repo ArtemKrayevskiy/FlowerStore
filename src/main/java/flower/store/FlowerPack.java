@@ -3,19 +3,18 @@ package flower.store;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
 public class FlowerPack extends Item{
-    @Getter@Setter
+    @Setter
     private Flower flower;
-    @Getter
     private int quantity;
-    private double price;
 
     public double getPrice(){
         return quantity * getFlower().getPrice();
     }
 
     public void setQuantity(int q){
-        this.quantity = q < 1?1 : q;
+        this.quantity = Math.max(q, 1);
     }
 
     public  FlowerPack(Flower flower, int quantity){

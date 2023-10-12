@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class  Store {
-    private List<Item> items = new ArrayList<>();
+    private final List<Item> items = new ArrayList<>();
     public List<Item>  search(SearchFilter filter){
         List<Item> found_items = new ArrayList<>();
         for (Item item:items) {

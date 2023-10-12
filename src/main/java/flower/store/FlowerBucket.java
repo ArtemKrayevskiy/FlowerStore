@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FlowerBucket extends Item{
-    private List<FlowerPack> flowerPacks = new ArrayList<>();
+    private final List<FlowerPack> flowerPacks = new ArrayList<>();
     @Getter @Setter
     private int quantity;
 
@@ -17,5 +17,9 @@ public class FlowerBucket extends Item{
             price += flowerPack.getPrice();
         }
         return  price;
+    }
+
+    public void add_pack(FlowerPack flowerpack){
+        this.flowerPacks.add(flowerpack);
     }
 }

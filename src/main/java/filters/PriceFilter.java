@@ -1,11 +1,8 @@
 package filters;
 
 import flower.store.Item;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.security.KeyStore;
 
 @Getter @Setter
 public class PriceFilter implements SearchFilter {
@@ -21,22 +18,26 @@ public class PriceFilter implements SearchFilter {
         }
     }
 
-    public  PriceFilter(double minPrice , double maxPrice){
-        this.maxPrice = minPrice > 0 ? minPrice : 0;
-        this.minPrice = minPrice > 0 ? minPrice :0;
+    public  PriceFilter(double minprice , double maxprice){
+        if(maxprice > 0){
+            this.maxPrice = maxprice;
+        }
+        else{
+            this.maxPrice = 0;
+        }
+        if(minprice > 0){
+            this.minPrice = minprice;
+        }else {
+            this.minPrice = 0;
+        }
     }
 
 
     public boolean match(Item item) {
         if (this.maxPrice != -1 && this.minPrice != -1) {
-            if (this.maxPrice > item.getPrice() && item.getPrice() > this.minPrice) {
-                return true;
-            }
+            return this.maxPrice > item.getPrice() && item.getPrice() > this.minPrice;
         }else if(this.maxPrice != -1 && item.getPrice() < this.maxPrice){
             return true;
-        }else if (this.minPrice != -1 && item.getPrice() > this.minPrice){
-            return true;
-        }
-        return false;
-        }
+        }else return this.minPrice != -1 && item.getPrice() > this.minPrice;
+    }
 }
