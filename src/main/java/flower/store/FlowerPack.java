@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-public class FlowerPack extends Item{
+public class FlowerPack extends Item {
     @Setter
     private Flower flower;
     private int quantity;

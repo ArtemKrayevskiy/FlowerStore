@@ -11,21 +11,29 @@ public class PriceFilter implements SearchFilter {
 
     public PriceFilter(double minPrice, boolean isItMax) {
         if (isItMax) {
-            this.maxPrice = minPrice > 0 ? minPrice : 0;
+            if (minPrice > 0) {
+                this.maxPrice = minPrice;
+            } else {
+                this.maxPrice =  0;
+            }
         }
         else {
-            this.minPrice = minPrice > 0 ? minPrice :0;
+            if (minPrice > 0) {
+                this.minPrice = minPrice;
+            } else {
+                this.minPrice =  0;
+            }
         }
     }
 
-    public  PriceFilter(double minprice, double maxprice){
-        if (maxprice > 0){
+    public  PriceFilter(double minprice, double maxprice) {
+        if (maxprice > 0) {
             this.maxPrice = maxprice;
         }
         else {
             this.maxPrice = 0;
         }
-        if (minprice > 0){
+        if (minprice > 0) {
             this.minPrice = minprice;
         } else {
             this.minPrice = 0;
@@ -36,8 +44,8 @@ public class PriceFilter implements SearchFilter {
     public boolean match(Item item) {
         if (this.maxPrice != -1 && this.minPrice != -1) {
             return this.maxPrice > item.getPrice() && item.getPrice() > this.minPrice;
-        } else if (this.maxPrice != -1 && item.getPrice() < this.maxPrice){
+        } else if (this.maxPrice != -1 && item.getPrice() < this.maxPrice) {
             return true;
-        } else {return this.minPrice != -1 && item.getPrice() > this.minPrice;}
+        } else {return this.minPrice != -1 && item.getPrice() > this.minPrice; }
     }
 }

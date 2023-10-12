@@ -17,11 +17,11 @@ public class  Store {
         return foundItems;
     }
 
-    public void add_item(Item item) {
+    public void addItem(Item item) {
         this.items.add(item);
     }
 
-    public int GetNumberOfItems() {
+    public int getNumberOfItems() {
         return  this.items.size();
     }
 }

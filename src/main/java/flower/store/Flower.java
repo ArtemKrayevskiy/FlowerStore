@@ -14,7 +14,7 @@ public class Flower extends Item {
     @lombok.Getter
     private FlowerType flowerType;
 
-    public Flower(Flower flower){
+    public Flower(Flower flower) {
         this.color = flower.color;
         this.price = flower.price;
         this.sepalLength = flower.sepalLength;
