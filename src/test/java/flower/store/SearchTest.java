@@ -9,15 +9,15 @@ import java.util.List;
 
 public class SearchTest {
 
-    private static final int rosePrice = 50;
-    private static  final int tulipPrice = 50;
-    private static final int roseQuantity = 3;
-    private static final int newQuantity = 4;
-    private static final int maxPrice = 300;
-    private static final int minPrice = 60;
-    private static final int minPriceForFirst = 50;
-    private static final int expectedFromFirst = 3;
-    private static final int newLength = 1;
+    private static final int ROSEPRICE = 50;
+    private static  final int TULIPPRICE = 50;
+    private static final int ROSEQUANTITY = 3;
+    private static final int NEWQUANTITY = 4;
+    private static final int MAXPRICE = 300;
+    private static final int MINPRICE = 60;
+    private static final int MINPRICEFORFIRST = 50;
+    private static final int  EXPECTEDFROMFIRST= 3;
+    private static final int NEWLENGTH = 1;
 
     private Flower rose;
 
@@ -28,9 +28,9 @@ public class SearchTest {
 
 
         rose = new Flower();
-        rose.setPrice(rosePrice);
+        rose.setPrice(ROSEPRICE);
         tulip = new Flower();
-        tulip.setPrice(tulipPrice);
+        tulip.setPrice(TULIPPRICE);
         newFlower = new Flower(rose);
     }
 
@@ -38,24 +38,24 @@ public class SearchTest {
     public void testFilterPrice() {
 
 
-        FlowerPack pack = new FlowerPack(rose, roseQuantity);
+        FlowerPack pack = new FlowerPack(rose, ROSEQUANTITY);
         Store store = new Store();
         FlowerBucket bucket = new FlowerBucket();
-        pack.setQuantity(newQuantity);
+        pack.setQuantity(NEWQUANTITY);
         bucket.addPack(pack);
         store.addItem(bucket);
         store.addItem(tulip);
         store.addItem(newFlower);
-        Assertions.assertEquals(expectedFromFirst, store.getNumberOfItems());
-        List<Item> searchResult = store.search(new PriceFilter(minPriceForFirst, false));
-        Assertions.assertEquals(newLength, searchResult.size());
+        Assertions.assertEquals(EXPECTEDFROMFIRST, store.getNumberOfItems());
+        List<Item> searchResult = store.search(new PriceFilter(MINPRICEFORFIRST, false));
+        Assertions.assertEquals(NEWLENGTH, searchResult.size());
         Assertions.assertEquals(bucket, searchResult.get(0));
         Store newStore = new Store();
         newStore.addItem(bucket);
         newStore.addItem(rose);
         newStore.addItem(tulip);
-        searchResult = store.search(new PriceFilter(minPrice, maxPrice));
-        Assertions.assertEquals(newLength, searchResult.size());
+        searchResult = store.search(new PriceFilter(MINPRICE, MAXPRICE));
+        Assertions.assertEquals(NEWLENGTH, searchResult.size());
         Assertions.assertEquals(bucket, searchResult.get(0));
     }
 }
