@@ -6,7 +6,7 @@ import lombok.Setter;
 public class FlowerPack extends Item{
     @Getter@Setter
     private Flower flower;
-    @Getter@Setter
+    @Getter
     private int quantity;
     private double price;
 
@@ -20,7 +20,7 @@ public class FlowerPack extends Item{
 
     public  FlowerPack(Flower flower, int quantity){
         this.flower = flower;
-        this.quantity = quantity + 1;
+        this.quantity = quantity;
     }
 
 }
