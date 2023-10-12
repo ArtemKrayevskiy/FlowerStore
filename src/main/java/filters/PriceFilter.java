@@ -43,9 +43,10 @@ public class PriceFilter implements SearchFilter {
 
     public boolean match(Item item) {
         if (this.maxPrice != -1 && this.minPrice != -1) {
-            return this.maxPrice > item.getPrice() && item.getPrice() > this.minPrice;
+            return this.maxPrice > item.getPrice() &&
+                    item.getPrice() > this.minPrice;
         } else if (this.maxPrice != -1 && item.getPrice() < this.maxPrice) {
             return true;
-        } else {return this.minPrice != -1 && item.getPrice() > this.minPrice; }
+        } else { return this.minPrice != -1 && item.getPrice() > this.minPrice; }
     }
 }
