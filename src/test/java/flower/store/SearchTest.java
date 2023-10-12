@@ -16,7 +16,7 @@ public class SearchTest {
     private static final int MAXPRICE = 300;
     private static final int MINPRICE = 60;
     private static final int MINPRICEFORFIRST = 50;
-    private static final int  EXPECTEDFROMFIRST= 3;
+    private static final int  EXPECTEDFROMFIRST = 3;
     private static final int NEWLENGTH = 1;
 
     private Flower rose;
@@ -47,7 +47,8 @@ public class SearchTest {
         store.addItem(tulip);
         store.addItem(newFlower);
         Assertions.assertEquals(EXPECTEDFROMFIRST, store.getNumberOfItems());
-        List<Item> searchResult = store.search(new PriceFilter(MINPRICEFORFIRST, false));
+        PriceFilter filter = new PriceFilter(MINPRICEFORFIRST, false);
+        List<Item> searchResult = store.search(filter);
         Assertions.assertEquals(NEWLENGTH, searchResult.size());
         Assertions.assertEquals(bucket, searchResult.get(0));
         Store newStore = new Store();
