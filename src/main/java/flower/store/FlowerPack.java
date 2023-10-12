@@ -20,7 +20,7 @@ public class FlowerPack extends Item{
 
     public  FlowerPack(Flower flower, int quantity){
         this.flower = flower;
-        this.quantity = quantity;
+        this.quantity = quantity + 1;
     }
 
 }
